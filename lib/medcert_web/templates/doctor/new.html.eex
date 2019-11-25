@@ -1,5 +1,6 @@
-<h1>New Doctor</h1>
+<h1 class="doctor-name-input-title">Enter DOCTOR Name</h1>
 
+<%= ReactPhoenix.ClientSide.react_component("Components.GameNameInput") %>
 <%= render "form.html", Map.put(assigns, :action, Routes.doctor_path(@conn, :create)) %>
 
 <span><%= link "Back", to: Routes.doctor_path(@conn, :index) %></span>

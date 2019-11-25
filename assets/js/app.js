@@ -15,3 +15,10 @@ import "phoenix_html"
 //
 // Local files can be imported directly using relative paths, for example:
 // import socket from "./socket"
+import "react-phoenix"
+
+import GameNameInput from './components/GameNameInput'
+
+window.Components = {
+  GameNameInput
+}

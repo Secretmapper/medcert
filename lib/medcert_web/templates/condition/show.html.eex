@@ -9,5 +9,4 @@
 
 </ul>
 
-<span><%= link "Edit", to: Routes.condition_path(@conn, :edit, @condition) %></span>
 <span><%= link "Back", to: Routes.condition_path(@conn, :index) %></span>

@@ -42,6 +42,8 @@ defmodule MedcertWeb do
       import MedcertWeb.ErrorHelpers
       import MedcertWeb.Gettext
       alias MedcertWeb.Router.Helpers, as: Routes
+
+      import ReactPhoenix.ClientSide
     end
   end
 

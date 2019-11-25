@@ -9,5 +9,4 @@
 
 </ul>
 
-<span><%= link "Edit", to: Routes.doctor_type_path(@conn, :edit, @doctor_type) %></span>
 <span><%= link "Back", to: Routes.doctor_type_path(@conn, :index) %></span>

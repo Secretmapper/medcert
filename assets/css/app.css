@@ -40,3 +40,8 @@ body { margin: 0 }
   50% { transform: scale(1.3); }
   100% { transform: scale(1); }
 }
+
+/** doctor **/
+.doctor-name-input-title {
+  text-align: center;
+}
