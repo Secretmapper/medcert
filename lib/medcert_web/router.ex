@@ -17,6 +17,8 @@ defmodule MedcertWeb.Router do
     pipe_through :browser
 
     get "/", PageController, :index
+    resources "/doctor_types", DoctorTypeController
+    resources "/doctors", DoctorController
   end
 
   # Other scopes may use custom stacks.

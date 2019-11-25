@@ -1,0 +1,13 @@
+<h1>Show Doctor type</h1>
+
+<ul>
+
+  <li>
+    <strong>Name:</strong>
+    <%= @doctor_type.name %>
+  </li>
+
+</ul>
+
+<span><%= link "Edit", to: Routes.doctor_type_path(@conn, :edit, @doctor_type) %></span>
+<span><%= link "Back", to: Routes.doctor_type_path(@conn, :index) %></span>
