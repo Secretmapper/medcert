@@ -5,11 +5,14 @@
   <li>
     <strong>Name:</strong>
     <%= @doctor.name %>
+  </li>
+
+  <li>
+    <strong>Type:</strong>
     <%= if @doctor.type do %>
       <%= @doctor.type.name %>
     <% end %>
   </li>
-
 </ul>
 
 <span><%= link "Edit", to: Routes.doctor_path(@conn, :edit, @doctor) %></span>

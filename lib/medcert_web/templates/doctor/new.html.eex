@@ -1,6 +1,12 @@
-<h1 class="doctor-name-input-title">Enter DOCTOR Name</h1>
+<h1 class="doctor-name-input-title">Create DOCTOR</h1>
 
-<%= ReactPhoenix.ClientSide.react_component("Components.GameNameInput") %>
+<%= if @changeset.action do %>
+  <div class="doctor-name-error alert alert-danger">
+    <%= if @changeset.errors[:name] do %>
+      Name <%= @changeset.errors[:name] |> elem(0) %>
+    <% end %>
+  </div>
+<% end %>
+
+<%= ReactPhoenix.ClientSide.react_component("Components.GameNameInput", @changeset.changes) %>
 <%= render "form.html", Map.put(assigns, :action, Routes.doctor_path(@conn, :create)) %>
-
-<span><%= link "Back", to: Routes.doctor_path(@conn, :index) %></span>

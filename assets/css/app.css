@@ -45,3 +45,7 @@ body { margin: 0 }
 .doctor-name-input-title {
   text-align: center;
 }
+
+.doctor-name-error {
+  text-align: center;
+}

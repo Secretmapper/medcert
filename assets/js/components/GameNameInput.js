@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import styled from 'styled-components'
 import _ from 'lodash'
 
@@ -20,16 +20,34 @@ const prevDefault = f => e => {
   f(e)
 }
 
-const GameNameInput = () => {
-  const [name, setName] = useState('_')
+const GameNameInput = (props) => {
+  const [name, setName] = useState(props.name || '_')
   const [cursorPosition, setCursorPosition] = useState(0)
+  const [entered, setEntered] = useState(false)
   const positionX = (cursorPosition % 10)
   const positionY = Math.floor(cursorPosition / 10)
 
-  const updateDoctorName = () => {
+  const enterDoctorName = () => {
     const DN = document.getElementById('doctor_name')
     DN.value = name
+    setEntered(true)
+
+    const DT = document.getElementById('doctor-form-type-input')
+    DT.style = 'display: visible'
+
+    const DS = document.getElementById('doctor-form-submit-input')
+    DS.style = 'display: visible'
   }
+  useEffect(() => {
+    const DN = document.getElementById('doctor-form-name-input')
+    DN.style = 'display: none'
+
+    const DT = document.getElementById('doctor-form-type-input')
+    DT.style = 'display: none'
+
+    const DS = document.getElementById('doctor-form-submit-input')
+    DS.style = 'display: none'
+  }, [])
 
   useKey('ArrowUp', prevDefault(() => setCursorPosition(p => c(p - 10))))
   useKey('ArrowDown', prevDefault(() => setCursorPosition(p => c(p + 10))))
@@ -46,7 +64,7 @@ const GameNameInput = () => {
 
           return (min === '') ? '_' : min
         } else if (positionX === 8) {
-          updateDoctorName()
+          enterDoctorName()
           return n
         }
       }
@@ -62,18 +80,20 @@ const GameNameInput = () => {
   return (
     <Container>
       <Name>{name}</Name>
-      <Keyboard>
-        {CHUNKED.map((c, y) => (
-          <Row key={y}>
-            {c.map((l, x) => (
-              <Letter key={l} highlight={x === positionX && y === positionY}>{l}</Letter>
-            ))}
-          </Row>
-        ))}
-        <Cursor
-          style={{ left: 50 * positionX, top: 50 * positionY }}
-        />
-      </Keyboard>
+      {!entered && (
+        <Keyboard>
+          {CHUNKED.map((c, y) => (
+            <Row key={y}>
+              {c.map((l, x) => (
+                <Letter key={l} highlight={x === positionX && y === positionY}>{l}</Letter>
+              ))}
+            </Row>
+          ))}
+          <Cursor
+            style={{ left: 50 * positionX, top: 50 * positionY }}
+          />
+        </Keyboard>
+      )}
     </Container>
   )
 }
