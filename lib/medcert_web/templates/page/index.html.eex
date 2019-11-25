@@ -12,6 +12,9 @@
       <li>
         <%= link "Doctors", to: Routes.doctor_path(@conn, :index) %>
       </li>
+      <li>
+        <%= link "Conditions", to: Routes.condition_path(@conn, :index) %>
+      </li>
     </ul>
   </article>
 </section>

@@ -19,6 +19,7 @@ defmodule MedcertWeb.Router do
     get "/", PageController, :index
     resources "/doctor_types", DoctorTypeController
     resources "/doctors", DoctorController
+    resources "/conditions", ConditionController
   end
 
   # Other scopes may use custom stacks.
