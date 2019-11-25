@@ -8,6 +8,18 @@
     <link rel="stylesheet" href="<%= Routes.static_path(@conn, "/css/app.css") %>"/>
   </head>
   <body>
+    <header class="header">
+      <section class="container">
+        <div class="header__logo">
+          <%= link "Home", to: Routes.page_path(@conn, :index) %>
+        </div>
+        <nav class="header__main-nav">
+          <%= link "Doctor type", to: Routes.doctor_type_path(@conn, :index) %>
+          <%= link "Doctors", to: Routes.doctor_path(@conn, :index) %>
+          <%= link "Conditions", to: Routes.condition_path(@conn, :index) %>
+        </nav>
+      </section>
+    </header>
     <main role="main" class="container">
       <p class="alert alert-info" role="alert"><%= get_flash(@conn, :info) %></p>
       <p class="alert alert-danger" role="alert"><%= get_flash(@conn, :error) %></p>
