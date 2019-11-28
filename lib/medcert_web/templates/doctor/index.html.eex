@@ -11,7 +11,12 @@
   <tbody>
 <%= for doctor <- @doctors do %>
     <tr>
-      <td><%= link doctor.name, to: Routes.doctor_path(@conn, :show, doctor) %></td>
+      <td>
+        <%= if doctor.name in ["NATHAN", "JP", "SAM"] do %>
+          <img class="doctor-image" src="<%= Routes.static_path(@conn, "/images/#{doctor.name}.jpg") %>" alt="Nathan"/>
+        <%= end %>
+        <%= link doctor.name, to: Routes.doctor_path(@conn, :show, doctor) %>
+      </td>
 
       <td style="text-align: right">
         <span><%= link "Edit", to: Routes.doctor_path(@conn, :edit, doctor) %></span>
