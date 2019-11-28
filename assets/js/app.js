@@ -18,7 +18,9 @@ import "phoenix_html"
 import "react-phoenix"
 
 import GameNameInput from './components/GameNameInput'
+import NathanGame from './components/NathanGame'
 
 window.Components = {
-  GameNameInput
+  GameNameInput,
+  NathanGame
 }

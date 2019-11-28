@@ -22,7 +22,12 @@
         <%= unless doctor.name in ["NATHAN", "JP", "SAM"] do %>
           <span><%= link "Edit", to: Routes.doctor_path(@conn, :edit, doctor) %></span>
         <%= end %>
-        <span><%= link "Delete", to: Routes.doctor_path(@conn, :delete, doctor), method: :delete, data: [confirm: "Are you sure?"] %></span>
+        <%= if doctor.name == "NATHAN" do %>
+          <%= ReactPhoenix.ClientSide.react_component("Components.NathanGame") %>
+          <span><%= link "Delete", to: "#", id: "nathan-delete" %></span>
+        <%= else %>
+          <span><%= link "Delete", to: Routes.doctor_path(@conn, :delete, doctor), method: :delete, data: [confirm: "Are you sure?"] %></span>
+          <%= end %>
       </td>
     </tr>
 <% end %>
