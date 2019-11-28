@@ -1,5 +1,9 @@
 <h1>Show Doctor</h1>
 
+<%= if @doctor.name in ["NATHAN", "JP", "SAM"] do %>
+  <img src="<%= Routes.static_path(@conn, "/images/#{@doctor.name}.jpg") %>" />
+<%= end %>
+
 <ul>
 
   <li>
@@ -15,5 +19,7 @@
   </li>
 </ul>
 
-<span><%= link "Edit", to: Routes.doctor_path(@conn, :edit, @doctor) %></span>
+<%= unless @doctor.name in ["NATHAN", "JP", "SAM"] do %>
+  <span><%= link "Edit", to: Routes.doctor_path(@conn, :edit, @doctor) %></span>
+<%= end %>
 <span><%= link "Back", to: Routes.doctor_path(@conn, :index) %></span>
