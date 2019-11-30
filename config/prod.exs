@@ -67,5 +67,10 @@ config :logger, level: :info
 # Note you can't rely on `System.get_env/1` when using releases.
 # See the releases documentation accordingly.
 
-# Finally import the config/prod.secret.exs which should be versioned
-# separately.
+config :medcert, MedcertWeb.Endpoint,
+  secret_key_base: System.get_env("SECRET_KEY_BASE")
+
+config :medcert, Medcert.Repo,
+  ssl: true,
+  url: System.get_env("DATABASE_URL"),
+  pool_size: String.to_integer(System.get_env("POOL_SIZE") || "10")
